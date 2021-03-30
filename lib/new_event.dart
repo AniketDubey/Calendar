@@ -22,9 +22,9 @@ class _NewEventState extends State<NewEvent> {
   void selectDate() {
     showDatePicker(
       context: context,
-      initialDate: DateTime(2020, nameMonths["March"]),
-      firstDate: DateTime(2020, nameMonths["March"], 1),
-      lastDate: DateTime(2020, nameMonths["March"], 31),
+      initialDate: DateTime(2020, nameMonths[widget.aniket]),
+      firstDate: DateTime(2020, nameMonths[widget.aniket], 1),
+      lastDate: DateTime(2020, nameMonths[widget.aniket], 31),
     ).then((pickedDate) {
       if (pickedDate == null) {
         return;
@@ -49,6 +49,7 @@ class _NewEventState extends State<NewEvent> {
       body: Container(
         padding: EdgeInsets.all(25),
         child: Column(
+          mainAxisAlignment:MainAxisAlignment.center,
           children: <Widget>[
             Card(
               elevation: 5,

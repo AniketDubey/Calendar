@@ -1,3 +1,5 @@
+import './eventList.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './new_event.dart';
 
@@ -25,9 +27,7 @@ class EventsPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Text("Events for $monName with size ${EventList.length}"),
-      ),
+      body: eventList(),
     );
   }
 }
