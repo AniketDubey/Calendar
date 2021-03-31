@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_date_pickers/flutter_date_pickers.dart';
 
-import './home_screen.dart';
 import './name_of_months.dart';
-
-final Map<int, List<String>> EventList = {};
+import './list_structure.dart';
 
 class NewEvent extends StatefulWidget {
-  final String aniket;
-  NewEvent(this.aniket);
+  final String monName;
+  final List<ListStructure> eventInfo;
+
+  NewEvent(this.monName, this.eventInfo);
 
   @override
   _NewEventState createState() => _NewEventState();
@@ -22,9 +21,9 @@ class _NewEventState extends State<NewEvent> {
   void selectDate() {
     showDatePicker(
       context: context,
-      initialDate: DateTime(2020, nameMonths[widget.aniket]),
-      firstDate: DateTime(2020, nameMonths[widget.aniket], 1),
-      lastDate: DateTime(2020, nameMonths[widget.aniket], 31),
+      initialDate: DateTime(2020, nameMonths[widget.monName]-1),
+      firstDate: DateTime(2020, nameMonths[widget.monName]-1),
+      lastDate: DateTime(2020, nameMonths[widget.monName]-1),
     ).then((pickedDate) {
       if (pickedDate == null) {
         return;
@@ -36,8 +35,12 @@ class _NewEventState extends State<NewEvent> {
   }
 
   void submitEvent(DateTime eventInfo) {
-    print(eventNameController.text);
-    EventList[eventInfo.month - 1].add(eventNameController.text);
+    final tx = ListStructure(
+      id: DateTime.now().toString(),
+      eventName: eventNameController.text,
+      eventDate: selectedDate,
+    );
+    widget.eventInfo.add(tx);
   }
 
   @override
@@ -49,7 +52,7 @@ class _NewEventState extends State<NewEvent> {
       body: Container(
         padding: EdgeInsets.all(25),
         child: Column(
-          mainAxisAlignment:MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Card(
               elevation: 5,

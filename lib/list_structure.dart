@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 
-class list_structure {
+class ListStructure {
   String id;
   String eventName;
-  DateTime eventInfo;
+  DateTime eventDate;
 
-  list_structure({
+  ListStructure({
     @required this.id,
     @required this.eventName,
-    @required this.eventInfo,
+    @required this.eventDate,
   });
 }
